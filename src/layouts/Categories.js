@@ -1,5 +1,18 @@
 import React from 'react';
+import { Container, ListGroup, ListGroupItem } from 'reactstrap';
 
 export default function Categories() {
-  return <div>Categories</div>;
+  return (
+    <div>
+      <Container>
+        <ListGroup>
+          <ListGroupItem>Cras justo odio</ListGroupItem>
+          <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
+          <ListGroupItem>Morbi leo risus</ListGroupItem>
+          <ListGroupItem>Porta ac consectetur ac</ListGroupItem>
+          <ListGroupItem>Vestibulum at eros</ListGroupItem>
+        </ListGroup>
+      </Container>
+    </div>
+  );
 }

@@ -4,20 +4,17 @@ import {
   NavItem,
   NavLink,
   Collapse,
-  UncontrolledDropdown,
   NavbarBrand,
   NavbarToggler,
   NavbarText,
   Navbar,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
 } from 'reactstrap';
+import CartSummary from './CartSummary';
 
 export default function Navi() {
   return (
     <div>
-      <Navbar color='light' expand='md' fixed='top' light container>
+      <Navbar color='light' expand='md' light container>
         <NavbarBrand href='/'>reactstrap</NavbarBrand>
         <NavbarToggler onClick={function noRefCheck() {}} />
         <Collapse navbar>
@@ -30,17 +27,7 @@ export default function Navi() {
                 GitHub
               </NavLink>
             </NavItem>
-            <UncontrolledDropdown inNavbar nav>
-              <DropdownToggle caret nav>
-                Options
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>Option 1</DropdownItem>
-                <DropdownItem>Option 2</DropdownItem>
-                <DropdownItem divider />
-                <DropdownItem>Reset</DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
+            <CartSummary />
           </Nav>
           <NavbarText>Simple Text</NavbarText>
         </Collapse>
