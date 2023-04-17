@@ -1,36 +1,40 @@
-import React from 'react';
-import {
-  Nav,
-  NavItem,
-  NavLink,
-  Collapse,
-  NavbarBrand,
-  NavbarToggler,
-  NavbarText,
-  Navbar,
-} from 'reactstrap';
+import React, { useState } from 'react';
+import { Nav, NavItem, NavLink, Navbar } from 'reactstrap';
 import CartSummary from './CartSummary';
+import SignedIn from './SignedIn';
+import SignedOut from './SignedOut';
 
 export default function Navi() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  function handleSignOut() {
+    setIsAuthenticated(false);
+  }
+
+  function handleSingIn() {
+    setIsAuthenticated(true);
+  }
+
   return (
     <div>
-      <Navbar color='light' expand='md' light container>
-        <NavbarBrand href='/'>reactstrap</NavbarBrand>
-        <NavbarToggler onClick={function noRefCheck() {}} />
-        <Collapse navbar>
-          <Nav className='me-auto' navbar>
-            <NavItem>
-              <NavLink href='/components/'>Components</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href='https://github.com/reactstrap/reactstrap'>
-                GitHub
-              </NavLink>
-            </NavItem>
-            <CartSummary />
-          </Nav>
-          <NavbarText>Simple Text</NavbarText>
-        </Collapse>
+      <Navbar>
+        <Nav>
+          <NavItem>
+            <NavLink href='#'>Link</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href='#'>Link</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href='#'>Another Link</NavLink>
+          </NavItem>
+          <CartSummary />
+          {isAuthenticated ? (
+            <SignedIn signOut={handleSignOut} bisey='1' />
+          ) : (
+            <SignedOut singIn={handleSingIn} />
+          )}
+        </Nav>
       </Navbar>
     </div>
   );

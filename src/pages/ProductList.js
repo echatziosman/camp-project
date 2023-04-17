@@ -1,37 +1,37 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Table } from 'reactstrap';
+import ProductService from '../services/productService';
 
 export default function ProductList() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    let productService = new ProductService();
+    productService.getProducts().then(result => setProducts(result.data.data));
+  }, []);
+
   return (
     <div>
       <Table>
         <thead>
           <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Username</th>
+            <th>Ürün Adı</th>
+            <th>Birim Fiyatı</th>
+            <th>Stok Adedi</th>
+            <th>Açıklama</th>
+            <th>Kategori</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope='row'>1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope='row'>2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope='row'>3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {products.map(product => (
+            <tr key={product.id}>
+              <td>{product.productName}</td>
+              <td>{product.quantityPerUnit}</td>
+              <td>{product.unitPrice}</td>
+              <td>{product.unitsInStock}</td>
+              <td>{product.category.categoryName}</td>
+            </tr>
+          ))}
         </tbody>
       </Table>
     </div>

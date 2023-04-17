@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 import {
   UncontrolledDropdown,
   DropdownToggle,
@@ -13,11 +14,13 @@ export default function CartSummary() {
         <DropdownToggle caret nav>
           Sepet
         </DropdownToggle>
-        <DropdownMenu right>
-          <DropdownItem>Option 1</DropdownItem>
-          <DropdownItem>Option 2</DropdownItem>
+        <DropdownMenu>
+          <DropdownItem>Asus Laptop</DropdownItem>
+          <DropdownItem>Dell Laptop</DropdownItem>
           <DropdownItem divider />
-          <DropdownItem>Reset</DropdownItem>
+          <DropdownItem>
+            <Link to='/cart'>Sepete git</Link>
+          </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     </div>
