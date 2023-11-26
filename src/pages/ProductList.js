@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Table } from 'reactstrap';
 import ProductService from '../services/productService';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 export default function ProductList() {
   const [products, setProducts] = useState([]);
@@ -25,7 +26,11 @@ export default function ProductList() {
         <tbody>
           {products.map(product => (
             <tr key={product.id}>
-              <td>{product.productName}</td>
+              <td>
+                <Link to={`/products/${product.productName}`}>
+                  {product.productName}
+                </Link>
+              </td>
               <td>{product.quantityPerUnit}</td>
               <td>{product.unitPrice}</td>
               <td>{product.unitsInStock}</td>
