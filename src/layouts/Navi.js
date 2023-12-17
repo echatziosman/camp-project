@@ -4,8 +4,11 @@ import CartSummary from './CartSummary';
 import SignedIn from './SignedIn';
 import SignedOut from './SignedOut';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function Navi() {
+  const { cartItems } = useSelector(state => state.cart); // useSelector fonksiyonu bizi store'daki sepete (cart) erişmemizi sağlıyor.
+
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const history = useHistory();
@@ -32,7 +35,7 @@ export default function Navi() {
           <NavItem>
             <NavLink href='#'>Another Link</NavLink>
           </NavItem>
-          <CartSummary />
+          {cartItems.length > 0 && <CartSummary />}
           {isAuthenticated ? (
             <SignedIn signOut={handleSignOut} bisey='1' />
           ) : (
